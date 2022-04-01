@@ -1,0 +1,114 @@
+$bg: white;
+$pri: black;
+$sec: darkorange;
+$ter: #777;
+$bg-dark: black;
+$pri-dark: white;
+$sec-dark: orange;
+$ter-dark: #666;
+$font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+  Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+$mode: dark;
+
+@mixin style {
+  padding: 45px;
+  margin: auto;
+  max-width: 980px;
+  color: $pri;
+  font-size: large;
+  line-height: 1.8;
+  @media screen and (max-width: 768px) {
+    padding: 24px;
+    font-size: medium;
+  }
+  > * {
+    margin-block: 1.5em;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.2;
+    margin-block-end: 0;
+  }
+  strong {
+    color: $sec;
+  }
+  a {
+    color: $sec;
+    text-decoration: underline;
+  }
+  iframe {
+    display: block;
+    margin: auto;
+  }
+  blockquote {
+    border-left: 6px solid $sec;
+    padding: 0 24px;
+  }
+  code {
+    color: white;
+    background-color: #222;
+  }
+  > p {
+    margin-block: 1.2em;
+    > div {
+      text-align: center;
+      p {
+        margin-top: 0px;
+        color: $ter;
+      }
+    }
+    > code {
+      padding: 6px;
+      border-radius: 6px;
+    }
+  }
+  > pre {
+    border-radius: 6px;
+    > p {
+      color: white;
+      background-color: #444;
+      margin-bottom: 0px;
+      padding: 6px 12px 6px 12px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+    > code {
+      padding: 12px;
+      margin-top: 0px;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+  }
+  hr {
+    border-color: $ter;
+  }
+
+  @media (prefers-color-scheme: $mode) {
+    color: $pri-dark;
+    strong {
+      color: $sec-dark;
+    }
+    a {
+      color: $sec-dark;
+    }
+    blockquote {
+      border-color: $sec-dark;
+    }
+    > p {
+      p {
+        color: $ter-dark;
+      }
+    }
+    hr {
+      border-color: $ter-dark;
+    }
+  }
+}
+
+.style {
+  @include style;
+}

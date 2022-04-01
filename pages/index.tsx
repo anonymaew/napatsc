@@ -1,31 +1,30 @@
 import type { NextPage } from "next";
-import Markdown from "markdown-to-jsx";
-import { useEffect, useState } from "react";
-import "github-markdown-css/github-markdown-dark.css";
+import fs from "fs";
+import path from "path";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import s from "./b/blog.module.scss";
 
-const Home: NextPage = () => {
-  const [readme, setReadme] = useState<string>("");
-
-  useEffect(() => {
-    const run = async () => {
-      const data = await fetch(
-        "https://raw.githubusercontent.com/anonymaew/anonymaew/master/README.md"
-      );
-      setReadme(await data.text());
-    };
-    run();
-  }, []);
-
+const Home: NextPage = (props: any) => {
   return (
-    <div style={{ backgroundColor: "#0d1117" }}>
-      <div
-        className="markdown-body"
-        style={{ padding: "45px", margin: "auto", maxWidth: "980px" }}
-      >
-        <Markdown>{readme}</Markdown>
-      </div>
+    <div className={s.firstPage}>
+      <MDXRemote {...props.intro} />
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const content = fs.readFileSync(
+    path.join("public", "anonymaew", "README.md"),
+    "utf-8"
+  );
+  const intro = await serialize(content);
+
+  return {
+    props: {
+      intro,
+    },
+  };
 };
 
 export default Home;
