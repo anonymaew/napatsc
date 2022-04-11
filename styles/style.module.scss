@@ -11,19 +11,17 @@ $font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
 $mode: dark;
 
 @mixin style {
-  padding: 45px;
   margin: auto;
+  padding: 1.5em;
   max-width: 980px;
   color: $pri;
-  font-size: large;
-  line-height: 1.8;
+  font-size: 1.2em;
+  line-height: 1.5em;
   @media screen and (max-width: 768px) {
     padding: 24px;
-    font-size: medium;
+    font-size: 1em;
   }
-  > * {
-    margin-block: 1.5em;
-  }
+
   h1,
   h2,
   h3,
@@ -32,6 +30,30 @@ $mode: dark;
   h6 {
     line-height: 1.2;
     margin-block-end: 0;
+  }
+  h1 {
+    margin-top: 1em;
+    font-size: 2.5em;
+  }
+  h2 {
+    margin-top: 0.8em;
+    font-size: 2em;
+  }
+  h3 {
+    margin-top: 0.6em;
+    font-size: 1.5em;
+  }
+  h4 {
+    margin-top: 0.5em;
+    font-size: 1.2em;
+  }
+  h5 {
+    margin-top: 0.4em;
+    font-size: 1em;
+  }
+  h6 {
+    margin-top: 0.3em;
+    font-size: 0.8em;
   }
   strong {
     color: $sec;
@@ -51,37 +73,6 @@ $mode: dark;
   code {
     color: white;
     background-color: #222;
-  }
-  > p {
-    margin-block: 1.2em;
-    > div {
-      text-align: center;
-      p {
-        margin-top: 0px;
-        color: $ter;
-      }
-    }
-    > code {
-      padding: 6px;
-      border-radius: 6px;
-    }
-  }
-  > pre {
-    border-radius: 6px;
-    > p {
-      color: white;
-      background-color: #444;
-      margin-bottom: 0px;
-      padding: 6px 12px 6px 12px;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
-    > code {
-      padding: 12px;
-      margin-top: 0px;
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-    }
   }
   hr {
     border-color: $ter;
@@ -107,8 +98,45 @@ $mode: dark;
       border-color: $ter-dark;
     }
   }
+  @media screen and (max-width: 768px) {
+    h1 {
+      margin-top: 0.8em;
+      font-size: 2em;
+    }
+    h2 {
+      margin-top: 0.6em;
+      font-size: 1.5em;
+    }
+    h3 {
+      margin-top: 0.5em;
+      font-size: 1.2em;
+    }
+    h4 {
+      margin-top: 0.4em;
+      font-size: 1em;
+    }
+    h5 {
+      margin-top: 0.3em;
+      font-size: 0.8em;
+    }
+  }
 }
 
 .style {
-  @include style;
+  font-family: $font;
+  min-height: 100vh;
+  background: $bg;
+  @media (prefers-color-scheme: $mode) {
+    background: $bg-dark;
+  }
+  > div {
+    @include style;
+  }
+}
+
+.footer {
+  text-align: center;
+  font-size: small;
+  color: $ter;
+  margin-top: 1em;
 }

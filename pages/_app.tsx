@@ -1,8 +1,8 @@
 import "../styles/globals.css";
-import "../styles/github-dark.min.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import s from "./b/blog.module.scss";
+import s from "../styles/style.module.scss";
+import "../styles/github-dark.min.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -24,13 +24,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 export const Footer = () => {
   return (
-    <div className={s.footer}>
+    <footer className={s.footer}>
       <hr />
       <p>
         © {new Date().getFullYear()}{" "}
         <a href="https://github.com/anonymaew">Napat Srichan</a>
       </p>
-    </div>
+    </footer>
   );
 };
 export default MyApp;
